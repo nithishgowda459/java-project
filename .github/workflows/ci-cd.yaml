@@ -12,10 +12,15 @@ jobs:
       - name: Set up node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+           node-version: 16
       - name: Install Dependency
-        run: nmp install
+        run: npm install
       - name: Run tests
-        run: nmp test
-      - name: Deploy to Production
-        run: nmp run
+        run: npm test
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+       - name: Deploy to production
+         run: npm run deploy
+         
