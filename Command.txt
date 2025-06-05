@@ -1,0 +1,5 @@
+docker build -t nithishgowda459/web .
+docker push nithishgowda459/web
+docker run -d --name firstcontainer -p 8080:8080  nithishgowda459/web
+k run mywebapp --image=nithishgowda459/web --restart=Never
+k expose po mywebapp --type=NodePort --port=8080 --name webservice
